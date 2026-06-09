@@ -2,7 +2,7 @@ import os
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 CHANNEL_ID = os.environ.get("CHANNEL_ID", "")
-CHECK_INTERVAL_MINUTES = 15
+CHECK_INTERVAL_MINUTES = 120
 
 RSS_FEEDS = [
     {"name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "category": "🪙 Kripto", "emoji": "🔶"},

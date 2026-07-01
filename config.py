@@ -6,9 +6,39 @@ CHECK_INTERVAL_MINUTES = 15
 
 RSS_FEEDS = [
     {
-        "name": "Kripto Kurdu",
-        "url": "https://rsshub.app/telegram/channel/kriptokurduhaber",
+        "name": "CoinDesk",
+        "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
         "category": "🪙 Kripto",
-        "emoji": "🐺"
+        "emoji": "🔶"
+    },
+    {
+        "name": "Cointelegraph",
+        "url": "https://cointelegraph.com/rss",
+        "category": "🪙 Kripto",
+        "emoji": "📡"
+    },
+    {
+        "name": "Bitcoin Magazine",
+        "url": "https://bitcoinmagazine.com/feed",
+        "category": "🪙 Kripto",
+        "emoji": "₿"
+    },
+    {
+        "name": "CryptoNews",
+        "url": "https://cryptonews.com/news/feed/",
+        "category": "🪙 Kripto",
+        "emoji": "🔷"
+    },
+    {
+        "name": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/news/rssindex",
+        "category": "📈 Səhm Bazarı",
+        "emoji": "🏦"
+    },
+    {
+        "name": "MarketWatch",
+        "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+        "category": "📈 Səhm Bazarı",
+        "emoji": "📊"
     },
 ]

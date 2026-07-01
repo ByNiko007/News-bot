@@ -1,5 +1,7 @@
 import asyncio
 import logging
+import os
+from aiohttp import web
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telegram import Bot
 from config import BOT_TOKEN, CHECK_INTERVAL_MINUTES
@@ -13,7 +15,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-async def fetch_and_send(fetcher: NewsFetcher, sender: NewsSender):
+async def fetch_and_send(fetcher, sender):
     logger.info("Xəbərlər yoxlanılır...")
     articles = await fetcher.fetch_all()
     if articles:
@@ -21,6 +23,10 @@ async def fetch_and_send(fetcher: NewsFetcher, sender: NewsSender):
         logger.info(f"{len(articles)} yeni xəbər göndərildi.")
     else:
         logger.info("Yeni xəbər tapılmadı.")
+
+
+async def health(request):
+    return web.Response(text="OK")
 
 
 async def main():
@@ -37,8 +43,17 @@ async def main():
     )
     scheduler.start()
 
-    logger.info(f"Bot işə düşdü. Hər {CHECK_INTERVAL_MINUTES} dəqiqədən bir yoxlanılacaq.")
     await fetch_and_send(fetcher, sender)
+
+    app = web.Application()
+    app.router.add_get("/", health)
+    port = int(os.environ.get("PORT", 8080))
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", port)
+    await site.start()
+
+    logger.info(f"Bot işə düşdü. Port: {port}")
 
     while True:
         await asyncio.sleep(60)

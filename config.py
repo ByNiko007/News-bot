@@ -11,10 +11,4 @@ RSS_FEEDS = [
         "category": "🪙 Kripto",
         "emoji": "🐺"
     },
-    {
-        "name": "Cointelegraph",
-        "url": "https://cointelegraph.com/rss",
-        "category": "🪙 Kripto",
-        "emoji": "📡"
-    },
 ]
